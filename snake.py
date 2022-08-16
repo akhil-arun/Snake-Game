@@ -8,8 +8,7 @@ class Snake:
         self.segments = []
         for i in range(3):
             self.add_segment((0 + (-20 * i), 0))
-        
-       
+           
     
     def add_segment(self, position):
         part = Turtle("square")
@@ -17,6 +16,11 @@ class Snake:
         part.pu()
         part.goto(position)
         self.segments.append(part)
+    
+    def create_snake(self):
+        self.segments = []
+        for i in range(3):
+            self.add_segment((0 + (-20 * i), 0))
     
     def extend(self):
         self.add_segment(self.segments[-1].position())
@@ -29,6 +33,7 @@ class Snake:
 
     # self.segments[0] is the head of the snake    
         self.segments[0].forward(20)
+       # print (self.segments[0].position())
     
     def up(self):
         if self.segments[0].heading() != 270:
@@ -43,7 +48,11 @@ class Snake:
         if self.segments[0].heading() != 180:
             self.segments[0].setheading(0)
 
-
+    def reset(self):
+        for seg in self.segments:
+            seg.goto(1000, 1000)
+        self.segments.clear()
+        self.create_snake()
 
 
 
