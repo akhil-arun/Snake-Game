@@ -33,13 +33,15 @@ while game_is_on:
         food.random_location()
     
     if abs(snake.segments[0].xcor()) > 280 or abs(snake.segments[0].ycor()) > 280:
-        game_is_on = False
+        scoreboard.reset()
+        snake.reset()
     
     for segment in snake.segments[1:]:
         if snake.segments[0].distance(segment) < 10:
-            game_is_on = False
-
-scoreboard.game_over()
+            scoreboard.reset()
+            snake.reset()
+            
+  
 screen.exitonclick()
 
 
